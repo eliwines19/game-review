@@ -1,6 +1,7 @@
 module Api
     module Vi
         class GamesController < ApplicationController
+            protect_from_forgery with: :null_session
 
             def index
                 games = Game.all
@@ -27,17 +28,17 @@ module Api
             def update
                 game = Game.find_by(slug: params[:slug])
 
-                if game.update
+                if game.update(game_params)
                     render json: GameSerializer.new(game, options).serialized_json
                 else
                     render json: { error: game.errors.messages }, status: 422
                 end
             end
 
-            def destory
-                game = game.find_by(slug: params[:slug])
+            def destroy
+                game = Game.find_by(slug: params[:slug])
 
-                if game.destory
+                if game.destroy
                     head :no_content
                 else
                     render json: { error: game.errors.messages }, status: 422
@@ -47,7 +48,7 @@ module Api
             private
             
             def game_params
-                params.require(:game).permit(:name, :description, :image_url)
+                params.require(:game).permit(:title, :description, :image_url)
             end
 
             def options

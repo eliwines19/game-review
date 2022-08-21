@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :vi do
       resources :games, param: :slug
+      resources :reviews
       resources only: [:create, :destory]
     end
   end

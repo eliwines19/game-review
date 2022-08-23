@@ -3,15 +3,20 @@
 // of the page.
 
 import React from 'react'
-import ReactDOM from 'react-dom'
 import App from '../components/App'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <Router>
-        <Route path="/" component={App}/>
-    </Router>,
-    document.body.appendChild(document.createElement('div'))
-  )
-})
+const rootEl = document.createElement("div")
+rootEl.setAttribute("id", "app")
+document.body.appendChild(rootEl)
+
+import { createRoot } from 'react-dom/client';
+const container = document.getElementById('app');
+const root = createRoot(container);
+root.render(
+  <Router>
+    <Routes>
+        <Route path="*" element={<App />}/>
+    </Routes>
+  </Router>
+);

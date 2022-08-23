@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   namespace :api do
-    namespace :vi do
+    namespace :v1 do
       resources :games, param: :slug
       resources :reviews
       resources only: [:create, :destory]

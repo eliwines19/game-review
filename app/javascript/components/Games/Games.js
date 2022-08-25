@@ -1,14 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Game from './Game'
+import styled from 'styled-components'
+
+const Home = styled.div`
+    text-align: center;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+`
+const Header = styled.div`
+    padding: 100px 100px 10px 100px;
+
+    h1 {
+        font-size: 42px
+    }
+`
+const Subheader = styled.div`
+    font-weight: 300
+    font-size: 26px
+`
+const Grid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    width: 100%;
+`
 
 const Games = () => {
     const [games, setGames] = useState([])
 
     useEffect(() => {
-        // get games from api
-        // add games to games state
-
         axios.get('/api/v1/games.json')
         .then( resp => {
             setGames(resp.data.data)
@@ -16,7 +38,7 @@ const Games = () => {
         .catch( resp => console.log(resp) )
     }, [games.length] )
 
-    const grid = games.map( item => {
+    const gamesGrid = games.map( item => {
         return(
             <Game 
                 key={item.attributes.title}
@@ -26,18 +48,18 @@ const Games = () => {
     })
 
     return (
-        <div className="home">
+        <Home>
 
-            <div className="header">
+            <Header>
                 <h1>Gamer Review</h1>
-                <div className="subheader">Learn what other gamers think.</div>
-            </div>
+                <Subheader>Learn what other gamers think.</Subheader>
+            </Header>
 
-            <div className="grid">
-                {grid}
-            </div>
+            <Grid>
+                {gamesGrid}
+            </Grid>
 
-        </div>
+        </Home>
     )
 }
 

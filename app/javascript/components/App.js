@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Routes, Switch } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Games from './Games/Games'
 import Game from './Game/Game'
 

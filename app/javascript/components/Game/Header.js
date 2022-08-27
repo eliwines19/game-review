@@ -13,11 +13,12 @@ const Card = styled.div`
 
     h1 {
         text-align: center;
-        margin-bottom: 0;
+        margin: 0 auto;
     }
 
     p {
         margin-top: 0;
+        margin-bottom: 0;
         padding: 5px;
         border: solid 1px #000;
     }
@@ -25,12 +26,10 @@ const Card = styled.div`
 `
 const TotalReviews = styled.div`
     font-size: 18px;
-    padding: 10px 0;
 `
 const TotalOutOf = styled.div`
     font-size: 18px;
     font-weight: bold;
-    padding: 10px 0;
 `
 
 const Header = (props) => {
@@ -44,14 +43,14 @@ const Header = (props) => {
             return (
                 <div>
                     <TotalReviews>{total} reviews</TotalReviews>
-                    <TotalOutOf>{avg_score} out of 5</TotalOutOf>
+                    <TotalOutOf>{avg_score}/5 stars</TotalOutOf>
                 </div>
             )   
         } else {
             return (
                 <div>
                     <TotalReviews>{total} review</TotalReviews>
-                    <TotalOutOf>{avg_score} out of 5</TotalOutOf>
+                    <TotalOutOf>{avg_score}/5 stars</TotalOutOf>
                 </div>
             )
         }

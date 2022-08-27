@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Header from './Header'
 import styled from 'styled-components'
+import ReviewForm from './ReviewForm'
 
 const Wrapper = styled.div`
     margin-left: auto;
@@ -17,10 +18,11 @@ const Column = styled.div`
 
     &:last-child {
         background: #000;
+        color: white;
     }
 `
 const Main = styled.div`
-    padding-left: 50px;
+    padding-left: 50pt;
 `
 
 
@@ -54,11 +56,10 @@ const Game = () => {
                             reviews={game.included}
                         />
                     }
-                    <div className="reviews"></div>
                 </Main>
             </Column>
             <Column>
-                <div className="review-form">review form here</div>
+                <ReviewForm />
             </Column>
         </Wrapper>
     )

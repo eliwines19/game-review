@@ -48,11 +48,21 @@ const Game = () => {
     const handleChange = (e) => {
         e.preventDefault()
 
-        console.log('name: ', e.target.name, 'value: ', e.target.value)
+        setReview(Object.assign({}, review, {[e.target.name]: e.target.value}))
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        const csrfToken = document.querySelector('[name=csrf-token]').content
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
+
+        const game_id = game.data.id
+        axios.post('/api/v1/reviews.json', {review, game_id})
+        .then(resp => {
+            debugger
+        })
+        .catch(resp => { console.log(resp) })
     }
 
     return (

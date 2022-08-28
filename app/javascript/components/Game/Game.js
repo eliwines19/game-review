@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Header from './Header'
@@ -45,22 +45,39 @@ const Game = () => {
 
     }, [])
 
+    const handleChange = (e) => {
+        e.preventDefault()
+
+        console.log('name: ', e.target.name, 'value: ', e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+    }
+
     return (
         <Wrapper>
-            <Column>
-                <Main>
-                    {
-                        loaded &&
-                        <Header
+            {
+                loaded &&
+                <Fragment>
+                    <Column>
+                        <Main>
+                            <Header
+                                attributes={game.data.attributes}
+                                reviews={game.included}
+                            />
+                        </Main>
+                    </Column>
+                    <Column>
+                        <ReviewForm
+                            handleChange={handleChange}
+                            handleSubmit={handleSubmit}
                             attributes={game.data.attributes}
-                            reviews={game.included}
+                            review={review}
                         />
-                    }
-                </Main>
-            </Column>
-            <Column>
-                <ReviewForm />
-            </Column>
+                    </Column>
+                </Fragment>
+            }
         </Wrapper>
     )
 }

@@ -18,7 +18,6 @@ const Column = styled.div`
 
     &:last-child {
         background: #000;
-        color: white;
     }
 `
 const Main = styled.div`

@@ -8,9 +8,14 @@ class Game < ApplicationRecord
     end
 
     def avg_score
-        return 0 unless reviews.count.positive?
+        return 0 unless reviews.size.positive?
 
-        reviews.average(:score).round(2).to_f
+        avg = reviews.average(:score)
+        if avg.nil?
+            return 0
+        else
+            avg.round(2).to_f
+        end
     end
 
 end

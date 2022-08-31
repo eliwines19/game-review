@@ -66,6 +66,12 @@ const Game = () => {
         .catch(resp => { console.log(resp) })
     }
 
+    const setRating = (score, e) => {
+        e.preventDefault()
+
+        setReview({...review, score})
+    }
+
     return (
         <Wrapper>
             {
@@ -83,6 +89,7 @@ const Game = () => {
                         <ReviewForm
                             handleChange={handleChange}
                             handleSubmit={handleSubmit}
+                            setRating={setRating}
                             attributes={game.data.attributes}
                             review={review}
                         />

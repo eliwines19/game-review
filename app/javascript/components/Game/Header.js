@@ -43,14 +43,14 @@ const Header = (props) => {
             return (
                 <div>
                     <TotalReviews>{total} reviews</TotalReviews>
-                    <TotalOutOf>{avg_score}/5 stars</TotalOutOf>
+                    <TotalOutOf>{avg_score} out of 5</TotalOutOf>
                 </div>
             )   
         } else {
             return (
                 <div>
                     <TotalReviews>{total} review</TotalReviews>
-                    <TotalOutOf>{avg_score}/5 stars</TotalOutOf>
+                    <TotalOutOf>{avg_score} out of 5</TotalOutOf>
                 </div>
             )
         }

@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Header from './Header'
+import Review from './Review'
 import styled from 'styled-components'
 import ReviewForm from './ReviewForm'
 

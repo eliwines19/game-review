@@ -60,7 +60,7 @@ const Game = () => {
         const game_id = game.data.id
         axios.post('/api/v1/reviews.json', {review, game_id})
         .then(resp => {
-            const included = [...game.included, resp.data.data]
+            const included = [...game.included, resp.data]
             setGame({...game, included})
             setReview({title: '', description: '', score: 0})
         })
@@ -71,6 +71,18 @@ const Game = () => {
         e.preventDefault()
 
         setReview({...review, score})
+    }
+
+    let reviews;
+    if (loaded && game.included) {
+        reviews = game.included.map( (item, index) => {
+            return (
+                <Review
+                    key={index}
+                    attributes={item.attributes}  
+                />
+            )
+        })
     }
 
     return (
@@ -84,6 +96,7 @@ const Game = () => {
                                 attributes={game.data.attributes}
                                 reviews={game.included}
                             />
+                            {reviews}
                         </Main>
                     </Column>
                     <Column>

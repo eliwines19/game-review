@@ -60,7 +60,7 @@ const Game = () => {
         const game_id = game.data.id
         axios.post('/api/v1/reviews.json', {review, game_id})
         .then(resp => {
-            const included = [...game.included, resp.data]
+            const included = [...game.included, resp.data.data]
             setGame({...game, included})
             setReview({title: '', description: '', score: 0})
         })

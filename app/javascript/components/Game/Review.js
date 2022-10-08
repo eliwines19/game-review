@@ -7,6 +7,10 @@ const Card = styled.div`
     padding: 20pt;
     margin: 0 20pt 20pt 0;
 `
+const RatingContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+`
 const Title = styled.div`
     padding: 20pt 0 0 0;
     font-size: 20pt;
@@ -23,10 +27,10 @@ const Review = (props) => {
     return (
         <Card>
             <RatingContainer>
-                <RatingScore>{score}</RatingScore>
+                <Rating score={score}/>
+            </RatingContainer>
                 <Title>{title}</Title>
                 <Description>{description}</Description>
-            </RatingContainer>
         </Card>
     )
 }

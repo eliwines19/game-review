@@ -24,6 +24,10 @@ const Column = styled.div`
 const Main = styled.div`
     padding-left: 50pt;
 `
+const ReviewTitle = styled.h3`
+    margin: 0 0 10pt 0;
+    font-size: 20pt;
+`
 
 
 const Game = () => {
@@ -96,6 +100,7 @@ const Game = () => {
                                 attributes={game.data.attributes}
                                 reviews={game.included}
                             />
+                            <ReviewTitle>Reviews</ReviewTitle>
                             {reviews}
                         </Main>
                     </Column>

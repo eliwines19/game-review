@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Rating from '../Rating/Rating'
 
 const Card = styled.div`
     border: 1px solid #efefef;
@@ -35,6 +36,14 @@ const LinkWrapper = styled.div`
     }
 `
 
+const score = (score) => {
+    if (score == 0) {
+        return (<div>No Reviews Yet</div>)
+    } else {
+        return (<Rating score={score}/>)
+    }
+}
+
 const Game = (props) => {
     return (
         <Card>
@@ -42,7 +51,7 @@ const Game = (props) => {
                 <img src={props.attributes.image_url} alt={props.attributes.title}/>
             </Logo>
             <Title>{props.attributes.title}</Title>
-            <div className="game-score">{props.attributes.avg_score}</div>
+            {score(props.attributes.avg_score)}
             <LinkWrapper>
                 <Link to={`games/${props.attributes.slug}`} >View Game</Link>
             </LinkWrapper>

@@ -1,10 +1,14 @@
+import { faAlignCenter } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
 import styled from 'styled-components'
+import Rating from '../Rating/Rating'
 
 const Wrapper = styled.div`
     padding: 50px 100px 20px 0;
 `
 const Card = styled.div`
+
+    text-align: center;
 
     img {
         width: 100%;
@@ -17,6 +21,7 @@ const Card = styled.div`
     }
 
     p {
+        text-align: left;
         margin-top: 0;
         margin-bottom: 0;
         padding: 5px;
@@ -24,35 +29,23 @@ const Card = styled.div`
     }
 
 `
-const TotalReviews = styled.div`
-    font-size: 18px;
-`
-const TotalOutOf = styled.div`
-    font-size: 18px;
-    font-weight: bold;
+const NoReviews = styled.h3`
+    text-align: center;
 `
 
 const Header = (props) => {
     const { avg_score, description, image_url, title } = props.attributes
     const total = props.reviews.length
 
-    const displayReviews = () => {
+    const noReviews = () => {
         if (total == 0) {
-            return <div>No Reviews Yet</div>
-        } else if (total > 1) {
-            return (
-                <div>
-                    <TotalReviews>{total} reviews</TotalReviews>
-                    <TotalOutOf>{avg_score} out of 5</TotalOutOf>
-                </div>
-            )   
-        } else {
-            return (
-                <div>
-                    <TotalReviews>{total} review</TotalReviews>
-                    <TotalOutOf>{avg_score} out of 5</TotalOutOf>
-                </div>
-            )
+            return <NoReviews>No Reviews Yet</NoReviews>
+        }
+    }
+
+    const noStarsYet = () => {
+        if (avg_score) {
+            return (<Rating score={avg_score}/>)
         }
     }
 
@@ -60,12 +53,11 @@ const Header = (props) => {
         <Wrapper>
             <Card>
                 <h1>{title}</h1>
+                {noStarsYet()}
                 <img src={image_url} alt={title}/>
                 <p>{description}</p>
             </Card>
-            <div>
-                {displayReviews()}
-            </div>
+            {noReviews()}
         </Wrapper>
     )
 }

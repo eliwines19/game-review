@@ -82,7 +82,6 @@ const Game = () => {
         reviews = game.included.map( (item, index) => {
             return (
                 <>
-                    <ReviewTitle>Reviews</ReviewTitle>
                     <Review
                         key={index}
                         attributes={item.attributes}  
@@ -103,6 +102,7 @@ const Game = () => {
                                 attributes={game.data.attributes}
                                 reviews={game.included}
                             />
+                            <ReviewTitle>Reviews</ReviewTitle>
                             {reviews}
                         </Main>
                     </Column>

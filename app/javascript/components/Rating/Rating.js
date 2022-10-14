@@ -1,15 +1,15 @@
 import React from 'react';
-import './Rating.css'
 
 const Rating = (props) => {
 
-    const score = (props.score/5) * 100;
+    const score = Math.round(props.score)
 
-    return (
-        <span className="star-wrapper">
-            <span className="stars" style={{width: score + "%"}}></span>
-        </span>
-    )
+    const showStars = () => {
+        return [...Array(score)].map((e, i) => <span key={i}>&#11088;</span>)
+    }
+
+    return showStars()
+
 };
 
 export default Rating;

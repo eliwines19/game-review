@@ -51,8 +51,8 @@ const Games = () => {
         <Home>
 
             <Header>
-                <h1>Gamer Review</h1>
-                <Subheader>Learn what other gamers think.</Subheader>
+                <h1>The Gamer Review</h1>
+                <Subheader>Learn What Other Gamers Are Saying</Subheader>
             </Header>
 
             <Grid>

@@ -7,13 +7,14 @@ import styled from 'styled-components'
 import ReviewForm from './ReviewForm'
 
 const Wrapper = styled.div`
+    font-family: 'Roboto Mono', serif;
     margin-left: auto;
     margin-right: auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 `
 const Column = styled.div`
-    background: #fff;
+    background-color: #F1F3F4;
     height: 100vh;
     overflow: scroll;
 
@@ -95,7 +96,7 @@ const Game = () => {
         <Wrapper>
             {
                 loaded &&
-                <Fragment>
+                <>
                     <Column>
                         <Main>
                             <Header
@@ -115,7 +116,7 @@ const Game = () => {
                             review={review}
                         />
                     </Column>
-                </Fragment>
+                </>
             }
         </Wrapper>
     )

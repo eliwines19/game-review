@@ -1,27 +1,29 @@
 import React from 'react'
-import { BrowserRouter as Router, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Rating from '../Rating/Rating'
 
 const Card = styled.div`
-    border: 1px solid #efefef;
-    background: #fff;
+    border: 1px solid black;
+    background: #F1F3F4;
     text-align: center;
+    box-shadow: 5px 5px 5px #939496;
 `
 const Logo = styled.div`
 
     img {
+        margin: 10px 0 0 0;
         height: 200px;
         width: 200px;
-        border-radius: 100%;
-        border: 1px solid #efefef;
+        
+        border: 1px solid #F8F9FA;
     }
 `
 const Title = styled.div`
     padding: 20px 0 10px 0;
 `
 const LinkWrapper = styled.div`
-    margin: 20px 0 20px 0;
+    margin: 20px 0 0 0;
     height: 50px;
 
     a {
@@ -33,6 +35,12 @@ const LinkWrapper = styled.div`
         border: 1px solid #000;
         width: 100%;
         text-decoration: none;
+        transition: 0.3s;
+    }
+
+    a:hover {
+        color: #000;
+        background: #F1F3F4;
     }
 `
 

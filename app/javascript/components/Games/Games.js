@@ -10,7 +10,9 @@ const Home = styled.div`
     margin-right: auto;
 `
 const Header = styled.div`
-    padding: 100px 100px 10px 100px;
+    color: #F1F3F4;
+    font-family: Silkscreen, serif;
+    padding: 50px 100px 10px 100px;
 
     h1 {
         font-size: 42px
@@ -21,10 +23,14 @@ const Subheader = styled.div`
     font-size: 26px
 `
 const Grid = styled.div`
+    font-family: 'Roboto Mono', serif;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
     width: 100%;
+`
+const Title = styled.h1`
+    
 `
 
 const Games = () => {
@@ -51,7 +57,7 @@ const Games = () => {
         <Home>
 
             <Header>
-                <h1>The Gamer Review</h1>
+                <Title>The Gamer Review</Title>
                 <Subheader>Learn What Other Gamers Are Saying</Subheader>
             </Header>
 

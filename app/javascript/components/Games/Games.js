@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Game from './Game'
 import styled from 'styled-components'
+import Loading from '../animations/Loading'
 
 const Home = styled.div`
     text-align: center;
@@ -29,16 +30,16 @@ const Grid = styled.div`
     grid-gap: 20px;
     width: 100%;
 `
-const Title = styled.h1`
-    
-`
+const Title = styled.h1``
 
 const Games = () => {
     const [games, setGames] = useState([])
+    const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
         axios.get('/api/v1/games.json')
         .then( resp => {
+            setLoaded(true)
             setGames(resp.data.data)
         } )
         .catch( resp => console.log(resp) )
@@ -53,19 +54,33 @@ const Games = () => {
         )
     })
 
+    const showHome = () => {
+        if (loaded) {
+            return (
+                <Home>
+
+                    <Header>
+                        <Title>The Gamer Review</Title>
+                        <Subheader>Learn What Other Gamers Are Saying</Subheader>
+                    </Header>
+        
+                    <Grid>
+                        {gamesGrid}
+                    </Grid>
+        
+                </Home>
+            )
+        } else {
+            return (
+                <Loading />
+            )
+        }
+    }
+
     return (
-        <Home>
-
-            <Header>
-                <Title>The Gamer Review</Title>
-                <Subheader>Learn What Other Gamers Are Saying</Subheader>
-            </Header>
-
-            <Grid>
-                {gamesGrid}
-            </Grid>
-
-        </Home>
+        <>
+            {showHome()}
+        </>
     )
 }
 

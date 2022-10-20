@@ -1,10 +1,11 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Header from './Header'
 import Review from './Review'
 import styled from 'styled-components'
 import ReviewForm from './ReviewForm'
+import Loading from '../animations/Loading'
 
 const Wrapper = styled.div`
     font-family: 'Roboto Mono', serif;
@@ -92,33 +93,42 @@ const Game = () => {
         })
     }
 
-    return (
-        <Wrapper>
-            {
-                loaded &&
-                <>
-                    <Column>
-                        <Main>
-                            <Header
+    const showGame = () => {
+        if (loaded) {
+            return (
+                <Wrapper>
+                    <>
+                        <Column>
+                            <Main>
+                                <Header
+                                    attributes={game.data.attributes}
+                                    reviews={game.included}
+                                />
+                                <ReviewTitle>Reviews</ReviewTitle>
+                                {reviews}
+                            </Main>
+                        </Column>
+                        <Column>
+                            <ReviewForm
+                                handleChange={handleChange}
+                                handleSubmit={handleSubmit}
+                                setRating={setRating}
                                 attributes={game.data.attributes}
-                                reviews={game.included}
+                                review={review}
                             />
-                            <ReviewTitle>Reviews</ReviewTitle>
-                            {reviews}
-                        </Main>
-                    </Column>
-                    <Column>
-                        <ReviewForm
-                            handleChange={handleChange}
-                            handleSubmit={handleSubmit}
-                            setRating={setRating}
-                            attributes={game.data.attributes}
-                            review={review}
-                        />
-                    </Column>
-                </>
-            }
-        </Wrapper>
+                        </Column>
+                    </>
+                </Wrapper>
+            )
+        } else {
+            return <Loading />
+        }
+    }
+
+    return (
+        <>
+            {showGame()}
+        </>
     )
 }
 

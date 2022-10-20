@@ -71,9 +71,7 @@ const Games = () => {
                 </Home>
             )
         } else {
-            return (
-                <Loading />
-            )
+            return <Loading />
         }
     }
 

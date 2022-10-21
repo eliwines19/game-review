@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+/* loading animation */
+ .loader-container {
+    position: fixed;
+    z-index: 1000;
+    left: 45%;
+    top: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.loader {
+    border: 16px solid #F1F3F4;
+    border-top: 16px solid #392759;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

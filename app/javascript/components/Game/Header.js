@@ -2,6 +2,7 @@ import { faAlignCenter } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
 import styled from 'styled-components'
 import Rating from '../Rating/Rating'
+import ReleaseDate from '../DataStyling/ReleaseDate'
 
 const Wrapper = styled.div`
     padding: 50px 100px 20px 0;
@@ -34,7 +35,7 @@ const NoReviews = styled.h3`
 `
 
 const Header = (props) => {
-    const { avg_score, description, image_url, title } = props.attributes
+    const { avg_score, description, image_url, title, release_date } = props.attributes
     const total = props.reviews.length
 
     const noReviews = () => {
@@ -53,6 +54,7 @@ const Header = (props) => {
         <Wrapper>
             <Card>
                 <h1>{title}</h1>
+                <ReleaseDate date={release_date}/>
                 {noStarsYet()}
                 <img src={image_url} alt={title}/>
                 <p>{description}</p>

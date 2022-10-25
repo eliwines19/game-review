@@ -7,6 +7,7 @@ Game
     description:string
     image_url:string
     slug:string
+    release_date:string
 
 Review
     title:string

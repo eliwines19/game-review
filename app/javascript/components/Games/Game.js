@@ -53,12 +53,14 @@ const score = (score) => {
 }
 
 const Game = (props) => {
+    console.log(props.attributes)
     return (
         <Card>
             <Logo>
                 <img src={props.attributes.image_url} alt={props.attributes.title}/>
             </Logo>
             <Title>{props.attributes.title}</Title>
+            <div className="release-date">{props.attributes.release_date}</div>
             {score(props.attributes.avg_score)}
             <LinkWrapper>
                 <Link to={`games/${props.attributes.slug}`} >View Game</Link>

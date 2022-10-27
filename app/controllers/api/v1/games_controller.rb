@@ -4,7 +4,11 @@ module Api
             protect_from_forgery with: :null_session
 
             def index
-                games = Game.all
+                if params[:sort] && params[:sort] === "release_date"
+                    games = Game.all.sort_by(&:release_date).reverse
+                else
+                    games = Game.all
+                end
 
                 render json: GameSerializer.new(games, options).serialized_json
             end

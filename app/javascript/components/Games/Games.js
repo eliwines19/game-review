@@ -3,6 +3,7 @@ import axios from 'axios'
 import Game from './Game'
 import styled from 'styled-components'
 import Loading from '../animations/Loading'
+import SortingButtons from './SortingButtons'
 
 const Home = styled.div`
     text-align: center;
@@ -35,15 +36,18 @@ const Title = styled.h1``
 const Games = () => {
     const [games, setGames] = useState([])
     const [loaded, setLoaded] = useState(false)
+    const [sort, setSort] = useState("")
 
     useEffect(() => {
-        axios.get('/api/v1/games.json')
+        setLoaded(false)
+        axios.get('/api/v1/games.json', { params: { sort: sort } })
         .then( resp => {
             setLoaded(true)
             setGames(resp.data.data)
         } )
         .catch( resp => console.log(resp) )
-    }, [games.length] )
+    }, [games.length, sort.length])
+
 
     const gamesGrid = games.map( item => {
         return(
@@ -54,6 +58,11 @@ const Games = () => {
         )
     })
 
+    const handleClick = (e) => {
+        e.preventDefault()
+        setSort(`${e.target.id}`)
+    }
+
     const showHome = () => {
         if (loaded) {
             return (
@@ -63,6 +72,8 @@ const Games = () => {
                         <Title>The Gamer Review</Title>
                         <Subheader>Learn What Other Gamers Are Saying</Subheader>
                     </Header>
+
+                    <SortingButtons handleClick={handleClick} />
         
                     <Grid>
                         {gamesGrid}

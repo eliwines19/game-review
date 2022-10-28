@@ -6,6 +6,8 @@ module Api
             def index
                 if params[:sort] && params[:sort] === "release_date"
                     games = Game.all.sort_by(&:release_date).reverse
+                elsif params[:sort] && params[:sort] === "avg_score"
+                    games = Game.all.sort_by(&:avg_score).reverse
                 else
                     games = Game.all
                 end

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 import Header from './Header'
 import Review from './Review'
@@ -29,6 +29,17 @@ const Main = styled.div`
 const ReviewTitle = styled.h3`
     margin: 0 0 10pt 0;
     font-size: 20pt;
+`
+const BackButtonWrapper = styled.div`
+    margin: 10px;
+
+    a {
+        padding: 5px;
+        border-radius: 10%;
+        background: black;
+        color: #F1F3F4;
+        text-decoration: none;
+    }
 `
 
 
@@ -99,6 +110,9 @@ const Game = () => {
                 <Wrapper>
                     <>
                         <Column>
+                        <BackButtonWrapper>
+                            <Link to={'/'}>&larr;Back</Link>
+                        </BackButtonWrapper>
                             <Main>
                                 <Header
                                     attributes={game.data.attributes}

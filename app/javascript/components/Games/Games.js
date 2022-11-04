@@ -4,6 +4,7 @@ import Game from './Game'
 import styled from 'styled-components'
 import Loading from '../animations/Loading'
 import SortingButtons from './SortingButtons'
+import Search from './Search'
 
 const Home = styled.div`
     text-align: center;
@@ -73,6 +74,7 @@ const Games = () => {
                         <Subheader>Learn What Other Gamers Are Saying</Subheader>
                     </Header>
 
+                    <Search />
                     <SortingButtons handleClick={handleClick} />
         
                     <Grid>

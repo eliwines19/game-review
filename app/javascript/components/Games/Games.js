@@ -22,8 +22,8 @@ const Header = styled.div`
     }
 `
 const Subheader = styled.div`
-    font-weight: 300
-    font-size: 26px
+    font-weight: 300;
+    font-size: 26px;
 `
 const Grid = styled.div`
     font-family: 'Roboto Mono', serif;
@@ -32,7 +32,10 @@ const Grid = styled.div`
     grid-gap: 20px;
     width: 100%;
 `
-const Title = styled.h1``
+const Title = styled.div`
+    margin: 30px 0;
+    font-size: 80px;
+`
 
 const Games = () => {
     const [games, setGames] = useState([])
@@ -71,7 +74,7 @@ const Games = () => {
 
                     <Header>
                         <Title>The Gamer Review</Title>
-                        <Subheader>Learn What Other Gamers Are Saying</Subheader>
+                        <Subheader>Learn What Other Gamers Have To Say</Subheader>
                     </Header>
 
                     <Search />

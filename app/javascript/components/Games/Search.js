@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -22,13 +22,19 @@ const SubmitBtn = styled.button`
     margin: 0 0 0 5px;
 `
 
-const Search = () => {
+const Search = (props) => {
+    const [searchText, setSearchText] = useState("")
+
+    const handleChange = (e) => {
+        setSearchText(e.target.value)
+    }
+
     return (
         <Wrapper>
-            <form>
+            <form onSubmit={props.handleSearch}>
                 <Headline>Search Our Library Of Games!</Headline>
                 <Field>
-                    <input type="text" name="search" placeholder="Search"/>
+                    <input onChange={handleChange} type="text" name="search" placeholder="Search"/>
                     <SubmitBtn>Search</SubmitBtn>
                 </Field>
             </form>

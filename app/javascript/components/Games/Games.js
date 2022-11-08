@@ -45,13 +45,13 @@ const Games = () => {
 
     useEffect(() => {
         setLoaded(false)
-        axios.get('/api/v1/games.json', { params: { sort: sort } })
+        axios.get('/api/v1/games.json', { params: { sort: sort, search: search } })
         .then( resp => {
             setLoaded(true)
             setGames(resp.data.data)
         } )
         .catch( resp => console.log(resp) )
-    }, [games.length, sort.length])
+    }, [games.length, sort.length, search.length])
 
 
     const gamesGrid = games.map( item => {
@@ -71,9 +71,6 @@ const Games = () => {
     const handleSearch = (e) => {
         e.preventDefault()
         setSearch(e.target.elements.search.value)
-        
-        // need to use this search value and send params of search value to backend to find search results
-        console.log(e.target.elements.search.value)
     }
 
     const showHome = () => {

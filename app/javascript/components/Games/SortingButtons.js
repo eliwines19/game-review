@@ -1,48 +1,37 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const SortingButtonsWrapper = styled.div`
-    color: #F1F3F4;
     text-align: left;
-    margin: 20px 0;
-    background: #F1F3F4;
-    width: 100px;
+    margin: 30px 0 20px 0;
 
-    button:hover {
+    span:hover {
         cursor: pointer;
+        text-decoration: underline;
     }
 `
-const Button = styled.button`
-    padding: 5px 0;
-    width: 100%;
-    background: #F1F3F4;
-    font-size: 15px;
+const Label = styled.div`
+    display: inline-block;
+    font-size: 20px;
+    color: #F1F3F4;
+    margin: 0 30px 0 0;
+`
+const Filter = styled.span`
+    font-size: 20px;
+    color: #F1F3F4;
+    margin: 0 30px 0 0;
 `
 
 const SortingButtons = (props) => {
-    const [open, setOpen] = useState(false)
-
-    const handleOpen = () => {
-        setOpen(!open)
-    }
-
-    const dropdown = () => {
-        if (open) {
-            return (
-                <div>
-                    <Button onClick={props.handleClick} id="release_date">Release Date</Button>
-                    <Button onClick={props.handleClick} id="avg_score">Score</Button>
-                </div>
-            )
-        }
-    }
-
 
     return (
-        <SortingButtonsWrapper>
-            <Button onClick={handleOpen} className="sort-by">Sort Games</Button>
-            {dropdown()}
-        </SortingButtonsWrapper>
+        <>
+            <SortingButtonsWrapper>
+                <Label>Sort By: </Label>
+                <Filter onClick={props.handleClick} id="release_date">Release Date</Filter>
+                <Filter onClick={props.handleClick} id="avg_score">Score</Filter>
+            </SortingButtonsWrapper>
+        </>
     )
 }
 

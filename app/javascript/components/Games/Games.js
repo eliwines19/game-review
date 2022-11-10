@@ -83,7 +83,7 @@ const Games = () => {
                         <Subheader>Learn What Other Gamers Have To Say</Subheader>
                     </Header>
 
-                    <Search handleSearch={handleSearch}/>
+                    {/* <Search handleSearch={handleSearch}/> */}
                     <SortingButtons handleClick={handleClick} />
         
                     <Grid>

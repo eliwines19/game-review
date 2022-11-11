@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
+import SearchBar from './SearchBar'
 
 const SearchGames = () => {
+    const [search, setSearch] = useState("")
+
+    const handleChange = (e) => {
+        setSearch(e.target.value)
+    }
+
     return (
-        <div>
-            Search games
+        <div className="main">
+            <SearchBar
+                search={search}
+                handleChange={handleChange}
+            />
         </div>
     )
 }

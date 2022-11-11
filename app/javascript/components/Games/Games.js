@@ -4,6 +4,7 @@ import Game from './Game'
 import styled from 'styled-components'
 import Loading from '../animations/Loading'
 import SortingButtons from './SortingButtons'
+import Navbar from './Navbar'
 import Search from './Search'
 
 const Home = styled.div`
@@ -15,7 +16,7 @@ const Home = styled.div`
 const Header = styled.div`
     color: #F1F3F4;
     font-family: Silkscreen, serif;
-    padding: 50px 100px 10px 100px;
+    padding: 25px 100px 10px 100px;
 
     h1 {
         font-size: 42px
@@ -77,6 +78,8 @@ const Games = () => {
         if (loaded) {
             return (
                 <Home>
+
+                    <Navbar />
 
                     <Header>
                         <Title>The Gamer Review</Title>

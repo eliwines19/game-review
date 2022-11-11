@@ -73,7 +73,7 @@ const Games = () => {
             return (
                 <Home>
 
-                    <Navbar />
+                    {/* <Navbar /> */}
 
                     <Header>
                         <Title>The Gamer Review</Title>

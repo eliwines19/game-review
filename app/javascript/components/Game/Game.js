@@ -6,6 +6,7 @@ import Review from './Review'
 import styled from 'styled-components'
 import ReviewForm from './ReviewForm'
 import Loading from '../animations/Loading'
+import BackButton from '../AppComponents/BackButton'
 
 const Wrapper = styled.div`
     font-family: 'Roboto Mono', serif;
@@ -110,9 +111,7 @@ const Game = () => {
                 <Wrapper>
                     <>
                         <Column>
-                        <BackButtonWrapper>
-                            <Link to={'/'}>&larr;Back</Link>
-                        </BackButtonWrapper>
+                            <BackButton/>
                             <Main>
                                 <Header
                                     attributes={game.data.attributes}

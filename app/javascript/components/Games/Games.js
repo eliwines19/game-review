@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import Loading from '../animations/Loading'
 import SortingButtons from './SortingButtons'
 import Navbar from './Navbar'
-import Search from './Search'
 
 const Home = styled.div`
     text-align: center;
@@ -69,11 +68,6 @@ const Games = () => {
         setSort(`${e.target.id}`)
     }
 
-    const handleSearch = (e) => {
-        e.preventDefault()
-        setSearch(e.target.elements.search.value)
-    }
-
     const showHome = () => {
         if (loaded) {
             return (
@@ -86,7 +80,6 @@ const Games = () => {
                         <Subheader>Learn What Other Gamers Have To Say</Subheader>
                     </Header>
 
-                    {/* <Search handleSearch={handleSearch}/> */}
                     <SortingButtons handleClick={handleClick} />
         
                     <Grid>

@@ -10,9 +10,9 @@ const Headline = styled.div`
     margin: 10px 0 0 0;
     font-size: 15px;
 `
-const Field = styled.div`
-
+const InputWrapper = styled.div`
     input {
+        width: 100%;
         padding: 10px;
     }
 `
@@ -22,9 +22,9 @@ const SearchBar = (props) => {
         <Wrapper>
             <Headline>Search Games</Headline>
             <form>
-                <Field>
+                <InputWrapper>
                     <input onChange={props.handleChange} value={props.search} type="text" name="search" placeholder="Search Games"/>
-                </Field>
+                </InputWrapper>
             </form>
         </Wrapper>
     )

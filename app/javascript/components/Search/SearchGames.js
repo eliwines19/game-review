@@ -10,7 +10,7 @@ const Main = styled.div`
     margin: 50px auto 0 auto;
 `
 const ResultsWrapper = styled.div`
-
+    margin: 40px 0 0 0;
 `
 
 const SearchGames = () => {

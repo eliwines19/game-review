@@ -11,6 +11,9 @@ const Headline = styled.div`
     font-size: 15px;
 `
 const InputWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+
     input {
         width: 100%;
         padding: 10px;

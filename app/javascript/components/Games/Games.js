@@ -41,17 +41,16 @@ const Games = () => {
     const [games, setGames] = useState([])
     const [loaded, setLoaded] = useState(false)
     const [sort, setSort] = useState("")
-    const [search, setSearch] = useState("")
 
     useEffect(() => {
         setLoaded(false)
-        axios.get('/api/v1/games.json', { params: { sort: sort, search: search } })
+        axios.get('/api/v1/games.json', { params: { sort: sort } })
         .then( resp => {
             setLoaded(true)
             setGames(resp.data.data)
         } )
         .catch( resp => console.log(resp) )
-    }, [games.length, sort.length, search.length])
+    }, [games.length, sort.length])
 
 
     const gamesGrid = games.map( item => {
@@ -73,7 +72,7 @@ const Games = () => {
             return (
                 <Home>
 
-                    {/* <Navbar /> */}
+                    <Navbar />
 
                     <Header>
                         <Title>The Gamer Review</Title>

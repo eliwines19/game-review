@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import axios from 'axios'
 import SearchBar from './SearchBar'
 import BackButton from '../AppComponents/BackButton'
-import styled from 'styled-components'
 
 const Main = styled.div`
     max-width: 1200px;
@@ -9,14 +10,20 @@ const Main = styled.div`
 `
 
 const SearchGames = () => {
+
     const [search, setSearch] = useState("")
 
     const handleChange = (e) => {
         setSearch(e.target.value)
     }
 
-    // now i need to take the search state and use send request to Games/index with search params
-    // and grab the results
+    useEffect(() => {
+        axios.get('/api/v1/games.json', { params: { search: search } })
+        .then(resp => {
+            console.log(resp.data.data)
+        })
+        .catch(resp => console.log(resp))
+    }, [search.length])
 
     return (
         <Main>
@@ -26,6 +33,8 @@ const SearchGames = () => {
                 search={search}
                 handleChange={handleChange}
             />
+
+            {search}
         </Main>
     )
 }

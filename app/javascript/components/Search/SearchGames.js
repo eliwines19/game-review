@@ -3,15 +3,19 @@ import styled from 'styled-components'
 import axios from 'axios'
 import SearchBar from './SearchBar'
 import BackButton from '../AppComponents/BackButton'
+import Results from './Results'
 
 const Main = styled.div`
     max-width: 1200px;
     margin: 50px auto 0 auto;
 `
+const ResultsWrapper = styled.div`
+
+`
 
 const SearchGames = () => {
-
     const [search, setSearch] = useState("")
+    const [results, setResults] = useState([])
 
     const handleChange = (e) => {
         setSearch(e.target.value)
@@ -20,10 +24,19 @@ const SearchGames = () => {
     useEffect(() => {
         axios.get('/api/v1/games.json', { params: { search: search } })
         .then(resp => {
-            console.log(resp.data.data)
+            setResults(resp.data.data)
         })
         .catch(resp => console.log(resp))
     }, [search.length])
+
+    const showResults = results.map(item => {
+        return (
+            <Results 
+                key={item.id}
+                attributes={item.attributes}
+            />
+        )
+    })
 
     return (
         <Main>
@@ -34,7 +47,9 @@ const SearchGames = () => {
                 handleChange={handleChange}
             />
 
-            {search}
+            <ResultsWrapper>
+                {showResults}
+            </ResultsWrapper>
         </Main>
     )
 }

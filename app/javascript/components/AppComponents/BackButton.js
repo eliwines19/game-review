@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 const BackButtonWrapper = styled.div`
@@ -12,21 +12,22 @@ const BackButtonWrapper = styled.div`
         color: #F1F3F4;
         text-decoration: none;
     }
+
+    a:hover {
+        cursor: pointer;
+    }
 `
 
-const BackButton = (props) => {
+const BackButton = () => {
+    const navigate = useNavigate()
 
-    const link = () => {
-        if (props.link) {
-            return <Link to="">&larr;Back</Link>
-        } else {
-            return <Link to={"/"}>&larr;Back</Link>
-        }
-    }
+    const handleClick = () => {
+        navigate(-1);
+    };
 
     return (
         <BackButtonWrapper>
-            {link()}
+            <a onClick={handleClick}>&larr;Back</a>
         </BackButtonWrapper>
     )
 }

@@ -31,17 +31,6 @@ const ReviewTitle = styled.h3`
     margin: 0 0 10pt 0;
     font-size: 20pt;
 `
-const BackButtonWrapper = styled.div`
-    margin: 10px;
-
-    a {
-        padding: 5px;
-        border-radius: 10%;
-        background: black;
-        color: #F1F3F4;
-        text-decoration: none;
-    }
-`
 
 
 const Game = () => {
@@ -111,7 +100,7 @@ const Game = () => {
                 <Wrapper>
                     <>
                         <Column>
-                            <BackButton/>
+                            <BackButton />
                             <Main>
                                 <Header
                                     attributes={game.data.attributes}

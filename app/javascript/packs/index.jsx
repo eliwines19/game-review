@@ -16,6 +16,7 @@ const root = createRoot(container);
 root.render(
   <Router>
     <Routes>
+        hello
         <Route path="*" element={<App />}/>
     </Routes>
   </Router>

@@ -31,7 +31,6 @@ const LinkWrapper = styled.div`
         border-radius: 4px;
         background: #000;
         padding: 10px 50px;
-        background: #000;
         border: 1px solid #000;
         width: 100%;
         text-decoration: none;

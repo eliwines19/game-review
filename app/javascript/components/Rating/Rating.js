@@ -8,7 +8,11 @@ const Rating = (props) => {
         return [...Array(score)].map((e, i) => <span key={i}>&#11088;</span>)
     }
 
-    return showStars()
+    if (score) {
+        return showStars()
+    } else {
+        return <div>No Ratings Yet</div>
+    }
 
 };
 

@@ -14,10 +14,19 @@ const BackButtonWrapper = styled.div`
     }
 `
 
-const BackButton = () => {
+const BackButton = (props) => {
+
+    const link = () => {
+        if (props.link) {
+            return <Link to="">&larr;Back</Link>
+        } else {
+            return <Link to={"/"}>&larr;Back</Link>
+        }
+    }
+
     return (
         <BackButtonWrapper>
-            <Link to={"/"}>&larr;Back</Link>
+            {link()}
         </BackButtonWrapper>
     )
 }
